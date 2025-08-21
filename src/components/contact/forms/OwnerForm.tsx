@@ -66,7 +66,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
           id={fieldKey}
           type={field.type}
           {...register(fieldKey)}
-          className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400 ${
+          className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 ${
             errors[fieldKey] ? 'border-red-500 dark:border-red-400' : ''
           }`}
           placeholder={`Ingresa ${field.label.toLowerCase()}`}
@@ -79,7 +79,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
     <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur">
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 flex items-center space-x-2">
-          <Building2 className="w-6 h-6 text-amber-600" />
+          <Building2 className="w-6 h-6 text-red-600" />
           <span>Solicitud de Venta</span>
         </CardTitle>
         <p className="text-zinc-600 dark:text-zinc-400">
@@ -91,7 +91,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
           
           <div className="space-y-6">
             <div className="flex items-center space-x-2 pb-2 border-b border-zinc-200 dark:border-zinc-700">
-              <User className="w-5 h-5 text-amber-600" />
+              <User className="w-5 h-5 text-red-600" />
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                 Información Personal
               </h3>
@@ -112,7 +112,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
                     id={fieldKey}
                     type={field.type}
                     {...register(fieldKey)}
-                    className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400 ${
+                    className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 ${
                       errors[fieldKey] ? 'border-red-500 dark:border-red-400' : ''
                     }`}
                     placeholder={`Ingresa ${field.label.toLowerCase()}`}
@@ -124,7 +124,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
 
           <div className="space-y-6">
             <div className="flex items-center space-x-2 pb-2 border-b border-zinc-200 dark:border-zinc-700">
-              <Home className="w-5 h-5 text-amber-600" />
+              <Home className="w-5 h-5 text-red-600" />
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                 Información de la Propiedad
               </h3>
@@ -141,7 +141,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
                   </div>
                 )}
                 <Select onValueChange={(value) => register("ciudad").onChange({ target: { value } })}>
-                  <SelectTrigger className="w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400">
+                  <SelectTrigger className="w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400">
                     <SelectValue placeholder="Selecciona una ciudad" />
                   </SelectTrigger>
                   <SelectContent>
@@ -165,7 +165,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
                   </div>
                 )}
                 <Select onValueChange={(value) => register("tipoPropiedad").onChange({ target: { value } })}>
-                  <SelectTrigger className="w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400">
+                  <SelectTrigger className="w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400">
                     <SelectValue placeholder="Selecciona tipo de propiedad" />
                   </SelectTrigger>
                   <SelectContent>
@@ -194,7 +194,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
                   id="valorAproximado"
                   type="number"
                   {...register("valorAproximado")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400 ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 ${
                     errors.valorAproximado ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="Ingresa el valor aproximado"
@@ -215,7 +215,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
                   id="valorAdministracion"
                   type="number"
                   {...register("valorAdministracion")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400 ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 ${
                     errors.valorAdministracion ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="Ingresa el valor de administración"
@@ -236,7 +236,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
 
           <div className="space-y-6">
             <div className="flex items-center space-x-2 pb-2 border-b border-zinc-200 dark:border-zinc-700">
-              <AlertCircle className="w-5 h-5 text-amber-600" />
+              <AlertCircle className="w-5 h-5 text-red-600" />
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                 Preguntas Adicionales
               </h3>
@@ -248,7 +248,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
               <textarea
                 id="comentariosAdicionales"
                 {...register("comentariosAdicionales")}
-                className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 focus:border-amber-500 dark:focus:border-amber-400 min-h-[100px] resize-none"
+                className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 focus:border-red-500 dark:focus:border-red-400 min-h-[100px] resize-none"
                 placeholder="Comentarios adicionales sobre tu propiedad..."
               />
             </div>
@@ -266,7 +266,7 @@ const OwnerForm: React.FC<OwnerFormProps> = ({ formSubmit, loading }) => {
           <Button
             disabled={loading}
             type="submit"
-            className="w-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold py-3 h-auto"
+            className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 h-auto"
           >
             {loading ? (
               <div className="w-4 h-4 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent" />

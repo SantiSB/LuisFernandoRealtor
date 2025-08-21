@@ -200,7 +200,7 @@ export default function ClientLeafletMap({
       {position && currentAddress && (
         <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-4">
           <div className="flex items-start space-x-2">
-            <MapPin className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+            <MapPin className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
             <div>
               <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{currentAddress}</div>
               <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">

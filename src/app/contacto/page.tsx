@@ -17,14 +17,14 @@ import {
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-amber-50/30 dark:from-zinc-900 dark:via-black dark:to-amber-900/10">
+          <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
       
       <ContactSection />
 
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800 mb-4">
+            <Badge variant="secondary" className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800 mb-4">
               Contacto Directo
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
@@ -41,7 +41,7 @@ export default function ContactoPage() {
             <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur hover:shadow-2xl transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -53,10 +53,10 @@ export default function ContactoPage() {
                   Para consultas detalladas y propuestas personalizadas
                 </p>
                 <a 
-                  href="mailto:realtorluisfernando@gmail.com" 
-                  className="text-amber-600 dark:text-amber-400 font-medium hover:text-amber-700 dark:hover:text-amber-300 transition-colors inline-flex items-center"
+                  href="mailto:info@jainmobiliaria.com" 
+                  className="text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors inline-flex items-center"
                 >
-                  realtorluisfernando@gmail.com
+                  info@jainmobiliaria.com
                   <Mail className="w-4 h-4 ml-2" />
                 </a>
               </CardContent>
@@ -65,7 +65,7 @@ export default function ContactoPage() {
             <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur hover:shadow-2xl transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -77,10 +77,10 @@ export default function ContactoPage() {
                   Atención inmediata y personalizada
                 </p>
                 <a 
-                  href="tel:+573214223931" 
-                  className="text-amber-600 dark:text-amber-400 font-medium hover:text-amber-700 dark:hover:text-amber-300 transition-colors inline-flex items-center"
+                  href="tel:+573105049377" 
+                  className="text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors inline-flex items-center"
                 >
-                  +57 321 422 3931
+                  +57 310 504 9377
                   <Phone className="w-4 h-4 ml-2" />
                 </a>
               </CardContent>
@@ -89,7 +89,7 @@ export default function ContactoPage() {
             <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur hover:shadow-2xl transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -100,8 +100,8 @@ export default function ContactoPage() {
                 <p className="text-zinc-600 dark:text-zinc-300 mb-4">
                   Reuniones y asesorías presenciales
                 </p>
-                <div className="text-amber-600 dark:text-amber-400 font-medium">
-                  <p>Medellín, Colombia</p>
+                <div className="text-red-600 dark:text-red-400 font-medium">
+                  <p>Pasto, Nariño</p>
                   <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Cita previa</p>
                 </div>
               </CardContent>
@@ -116,63 +116,63 @@ export default function ContactoPage() {
                   ¿Por qué elegirnos?
                 </CardTitle>
                 <p className="text-zinc-600 dark:text-zinc-400">
-                  Más de una década de experiencia en el mercado inmobiliario de lujo
+                  La inmobiliaria líder en Nariño con amplia experiencia en Pasto
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid gap-4">
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <Award className="w-4 h-4 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Experiencia Comprobada
+                        Líder en Nariño
                       </h4>
                       <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                        Más de 10 años en el mercado inmobiliario de alto valor
+                        La inmobiliaria más confiable de Pasto con amplia experiencia
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <Users className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
+                        Todos los Presupuestos
+                      </h4>
+                      <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                        Propiedades en arriendo y venta para todas las necesidades
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Target className="w-4 h-4 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
                         Atención Personalizada
                       </h4>
                       <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                        Servicio exclusivo y dedicado para cada cliente
+                        Servicio dedicado y asesoría especializada en Pasto
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <Target className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Estrategias Innovadoras
-                      </h4>
-                      <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                        Marketing digital y tecnologías de vanguardia
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Resultados Garantizados
+                        Confianza Total
                       </h4>
                       <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                        Éxito comprobado en tiempo récord
+                        Tu socio inmobiliario de confianza en Nariño
                       </p>
                     </div>
                   </div>
@@ -181,7 +181,7 @@ export default function ContactoPage() {
                 <div className="flex items-center space-x-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
                   <div className="flex items-center space-x-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-amber-500 fill-current" />
+                      <Star key={i} className="w-5 h-5 text-red-500 fill-current" />
                     ))}
                   </div>
                   <span className="text-zinc-600 dark:text-zinc-400 text-sm">
@@ -196,7 +196,7 @@ export default function ContactoPage() {
                 <div className="w-32 h-32 mb-6">
                   <Image 
                     src="/logo.svg" 
-                    alt="Luis Fernando Realtor" 
+                    alt="J&A Inmobiliaria" 
                     width={128} 
                     height={128} 
                     className="w-full h-full" 
@@ -204,17 +204,17 @@ export default function ContactoPage() {
                 </div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
-                    Luis Fernando
+                    J&A Inmobiliaria
                   </h3>
-                  <p className="text-xl font-semibold text-amber-600 dark:text-amber-400">
-                    REALTOR
+                  <p className="text-xl font-semibold text-red-600 dark:text-red-400">
+                    Bienes Raíces de Lujo
                   </p>
                   <p className="text-zinc-600 dark:text-zinc-400 mt-4 text-sm">
                     Especialistas en bienes raíces de lujo
                   </p>
                 </div>
               </div>
-              <div className="absolute -inset-4 bg-gradient-to-br from-amber-500/10 to-yellow-600/10 rounded-2xl blur-xl"></div>
+              <div className="absolute -inset-4 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-2xl blur-xl"></div>
             </div>
           </div>
         </div>

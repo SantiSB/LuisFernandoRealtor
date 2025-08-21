@@ -13,10 +13,8 @@ import WhatsAppButton from "@/components/whatasapp/WhatsAppButton";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title:
-    "Luis Fernando Realtor | Agente de Bienes Raíces de Lujo | Pasto, Medellín, Cali | Vende tu propiedad en tiempo record",
-  description:
-    "Agente de Bienes Raíces de Lujo | Pasto, Medellín, Cali | Vende tu propiedad en tiempo record",
+  title: "J&A Inmobiliaria | Inmobiliaria Líder en Nariño | Propiedades en Arriendo y Venta en Pasto | Todos los Presupuestos",
+  description: "J&A Inmobiliaria, la inmobiliaria líder en Nariño. Encuentra propiedades en arriendo y venta en Pasto para todos los presupuestos. Tu socio inmobiliario de confianza en Nariño.",
 };
 
 export default function RootLayout({
@@ -34,7 +32,7 @@ export default function RootLayout({
                 className={`${inter.className} bg-gray-50 dark:bg-black text-black dark:text-white`}
               >
                 <Header />
-                <WhatsAppButton phoneNumber="573214223931" />
+                <WhatsAppButton phoneNumber="573105049377" />
                 {children}
                 <Footer />
               </body>

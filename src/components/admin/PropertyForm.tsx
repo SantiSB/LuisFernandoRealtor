@@ -58,7 +58,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
         <CardHeader className="border-b border-zinc-200 dark:border-zinc-700">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center">
+                              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -96,7 +96,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                     value={formData.title}
                     onChange={handleInputChange}
                     required
-                    className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                    className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                     placeholder="Ej: Hermosa casa en el norte de Medellín"
                   />
                 </div>
@@ -119,7 +119,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                     Ciudad
                   </Label>
                   <Select name="city" value={formData.city} onValueChange={(value) => handleInputChange({ target: { name: 'city', value } } as any)}>
-                    <SelectTrigger className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400">
+                    <SelectTrigger className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400">
                       <SelectValue placeholder="Seleccionar ciudad" />
                     </SelectTrigger>
                     <SelectContent>
@@ -145,7 +145,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                       onChange={handleInputChange}
                       required
                       min="0"
-                      className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                      className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                       placeholder="0"
                     />
                   </div>
@@ -163,7 +163,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                      className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                       placeholder="+57 300 123 4567"
                     />
                   </div>
@@ -176,7 +176,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                     Tipo de Propiedad
                   </Label>
                   <Select name="type" value={formData.type} onValueChange={(value) => handleInputChange({ target: { name: 'type', value } } as any)}>
-                    <SelectTrigger className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400">
+                    <SelectTrigger className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400">
                       <SelectValue placeholder="Seleccionar tipo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -193,7 +193,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                     Estado
                   </Label>
                   <Select name="status" value={formData.status} onValueChange={(value) => handleInputChange({ target: { name: 'status', value } } as any)}>
-                    <SelectTrigger className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400">
+                    <SelectTrigger className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400">
                       <SelectValue placeholder="Seleccionar estado" />
                     </SelectTrigger>
                     <SelectContent>
@@ -218,7 +218,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                         value={formData.bedrooms}
                         onChange={handleInputChange}
                         min="0"
-                        className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                        className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                         placeholder="0"
                       />
                     </div>
@@ -237,7 +237,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                         value={formData.bathrooms}
                         onChange={handleInputChange}
                         min="0"
-                        className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                        className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                         placeholder="0"
                       />
                     </div>
@@ -256,7 +256,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                         value={formData.area}
                         onChange={handleInputChange}
                         min="0"
-                        className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                        className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                         placeholder="0"
                       />
                     </div>
@@ -275,7 +275,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={4}
-                className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                 placeholder="Describe las características y beneficios de la propiedad..."
               />
             </div>
@@ -292,10 +292,10 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                   accept="image/*"
                   multiple
                   onChange={handleImageChange}
-                  className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                  className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                 />
                 {imageUrls.length > 0 && (
-                  <Badge variant="secondary" className="mt-2 bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                  <Badge variant="secondary" className="mt-2 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">
                     {imageUrls.length} imagen{imageUrls.length !== 1 ? 'es' : ''} actual{imageUrls.length !== 1 ? 'es' : ''}
                   </Badge>
                 )}
@@ -312,10 +312,10 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
                   accept="video/*"
                   multiple
                   onChange={handleVideoChange}
-                  className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                  className="mt-1 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                 />
                 {videoUrls.length > 0 && (
-                  <Badge variant="secondary" className="mt-2 bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                  <Badge variant="secondary" className="mt-2 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">
                     {videoUrls.length} video{videoUrls.length !== 1 ? 's' : ''} actual{videoUrls.length !== 1 ? 'es' : ''}
                   </Badge>
                 )}
@@ -334,7 +334,7 @@ export default function PropertyForm({ property, onSave, onClose }: PropertyForm
               <Button
                 type="submit"
                 disabled={uploading}
-                className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold"
               >
                 {uploading ? (
                   <>

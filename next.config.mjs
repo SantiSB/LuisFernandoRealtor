@@ -5,6 +5,7 @@ const nextConfig = {
     domains: [
       'firebasestorage.googleapis.com',
       'lh3.googleusercontent.com',
+      'images.unsplash.com',
     ],
     formats: ['image/avif', 'image/webp'],
   },

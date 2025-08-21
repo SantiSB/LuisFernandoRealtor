@@ -13,7 +13,7 @@ export default function Home() {
   const { data: featuredProperties, isLoading } = useFeaturedProperties();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-amber-50/30 dark:from-zinc-900 dark:via-black dark:to-amber-900/10">
+          <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
       <MainSection />
       
       <div className="w-full mb-16">
@@ -22,12 +22,12 @@ export default function Home() {
       
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="text-center mb-12 lg:mb-16">
-          <Badge variant="secondary" className="mb-4 bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800">
+          <Badge variant="secondary" className="mb-4 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800">
             Catálogo Premium
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
             Propiedades
-            <span className="block bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
               Destacadas
             </span>
           </h2>
@@ -39,7 +39,7 @@ export default function Home() {
         {isLoading ? (
           <div className="flex items-center justify-center py-16">
             <div className="text-center">
-              <Loader2 className="h-8 w-8 animate-spin text-amber-600 dark:text-amber-400 mx-auto mb-4" />
+              <Loader2 className="h-8 w-8 animate-spin text-red-600 dark:text-red-400 mx-auto mb-4" />
               <p className="text-zinc-600 dark:text-zinc-400">Cargando propiedades...</p>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Home() {
               <Link href="/propiedades">
                 <Button 
                   size="lg"
-                  className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Ver Todas las Propiedades
                 </Button>

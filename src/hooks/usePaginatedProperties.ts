@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPaginatedProperties } from '../../firebase/firestoreService';
 import { Property } from '../types/property';
+import { getRandomPropertyImages, getRandomPropertyImage } from '../constants/propertyImages';
 
 interface UsePaginatedPropertiesProps {
   page: number;
@@ -30,7 +31,27 @@ export function usePaginatedProperties({ page, pageSize = 12, filters = {} }: Us
     queryFn: async () => {
       if (!hasActiveFilters) {
         // Sin filtros: usar paginación normal
-        return await getPaginatedProperties(page, pageSize);
+        const result = await getPaginatedProperties(page, pageSize);
+        
+        // Agregar imágenes de fallback a las propiedades que no tengan imágenes
+        const propertiesWithFallbackImages = result.properties.map(property => {
+          if (!property.images || property.images.length === 0) {
+            const fallbackImages = property.type 
+              ? getRandomPropertyImages(property.type, 3)
+              : Array.from({ length: 3 }, () => getRandomPropertyImage());
+            
+            return {
+              ...property,
+              images: fallbackImages
+            };
+          }
+          return property;
+        });
+        
+        return {
+          ...result,
+          properties: propertiesWithFallbackImages
+        };
       } else {
         // Con filtros: obtener todas las propiedades y filtrar
         const allData = await getPaginatedProperties(1, 1000); // Obtener todas
@@ -75,8 +96,23 @@ export function usePaginatedProperties({ page, pageSize = 12, filters = {} }: Us
         const offset = (page - 1) * pageSize;
         const paginatedProperties = filteredProperties.slice(offset, offset + pageSize);
         
+        // Agregar imágenes de fallback a las propiedades que no tengan imágenes
+        const propertiesWithFallbackImages = paginatedProperties.map(property => {
+          if (!property.images || property.images.length === 0) {
+            const fallbackImages = property.type 
+              ? getRandomPropertyImages(property.type, 3)
+              : Array.from({ length: 3 }, () => getRandomPropertyImage());
+            
+            return {
+              ...property,
+              images: fallbackImages
+            };
+          }
+          return property;
+        });
+        
         return {
-          properties: paginatedProperties,
+          properties: propertiesWithFallbackImages,
           total: totalFiltered,
           originalTotal: allData.total
         };

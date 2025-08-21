@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Property } from '../types/property';
 // Importa el servicio para interactuar con propiedades en Firestore
 import { propertyService } from '../../firebase/firestoreService';
+import { getRandomPropertyImages, getRandomPropertyImage } from '../constants/propertyImages';
 
 // Hook personalizado para manejar la lógica de la página de detalle de una propiedad
 export function usePropertyDetailPageLogic(id: string | string[]) {
@@ -33,8 +34,20 @@ export function usePropertyDetailPageLogic(id: string | string[]) {
     }
   }
 
-  // Obtiene el arreglo de imágenes de la propiedad, o un arreglo vacío si no existe
-  const images = Array.isArray(property?.images) ? property.images : [];
+  // Obtiene el arreglo de imágenes de la propiedad, o imágenes de fallback si no existe
+  const images = (() => {
+    if (Array.isArray(property?.images) && property.images.length > 0) {
+      return property.images;
+    }
+    
+    // Si no hay imágenes, generar imágenes de fallback basadas en el tipo
+    if (property?.type) {
+      return getRandomPropertyImages(property.type, 5);
+    }
+    
+    // Si no hay tipo específico, usar imágenes aleatorias
+    return Array.from({ length: 5 }, () => getRandomPropertyImage());
+  })();
   
   // Función para mostrar la siguiente imagen en el carrusel
   const nextImage = () => setActiveImage((prev) => (prev + 1) % images.length);

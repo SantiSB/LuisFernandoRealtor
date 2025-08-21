@@ -1,5 +1,5 @@
 {
-  "name": "luis-fernando-realtor-app",
+  "name": "jya-inmobiliaria-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -25,7 +25,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "firebase": "^11.9.1",
-    "framer-motion": "^11.1.9",
+    "framer-motion": "^11.18.2",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.525.0",
     "next": "14.1.4",

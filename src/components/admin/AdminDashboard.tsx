@@ -36,13 +36,13 @@ export default function AdminDashboard() {
   } = useAdminDashboardLogic();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-amber-50/30 dark:from-zinc-900 dark:via-black dark:to-amber-900/10">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
       
       <div className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur border-b border-zinc-200 dark:border-zinc-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <Building2 className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -84,7 +84,7 @@ export default function AdminDashboard() {
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
               <div>
                 <CardTitle className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 flex items-center space-x-2">
-                  <Building2 className="w-6 h-6 text-amber-600" />
+                  <Building2 className="w-6 h-6 text-red-600" />
                   <span>Propiedades</span>
                 </CardTitle>
                 <p className="text-zinc-600 dark:text-zinc-400 mt-1">
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
               </div>
               <Button
                 onClick={handleCreateProperty}
-                className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Nueva Propiedad
@@ -106,7 +106,7 @@ export default function AdminDashboard() {
           <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur">
             <CardContent className="py-16">
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Loader2 className="w-8 h-8 text-white animate-spin" />
                 </div>
                 <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -150,7 +150,7 @@ export default function AdminDashboard() {
                             onClick={() => setPage(pageNumber)}
                             className={
                               isActive 
-                                ? "bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white" 
+                                ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white" 
                                 : "border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800"
                             }
                           >
@@ -176,7 +176,7 @@ export default function AdminDashboard() {
                       <Button
                         variant="outline"
                         onClick={() => setPage(page + 1)}
-                        className="border-amber-300 dark:border-amber-600 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-900/20"
+                        className="border-red-300 dark:border-red-600 text-red-700 dark:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20"
                       >
                         Ver más propiedades
                       </Button>

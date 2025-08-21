@@ -31,7 +31,7 @@ export default function ContactSection() {
       label: "Soy Propietario",
       description: "Vender o alquilar mi propiedad",
       icon: Building2,
-      color: "from-amber-500 to-yellow-600"
+              color: "from-red-500 to-red-600"
     },
     {
       id: USER_ROLES.BUYER,
@@ -50,12 +50,12 @@ export default function ContactSection() {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-zinc-50 via-white to-amber-50/30 dark:from-zinc-900 dark:via-black dark:to-amber-900/10 py-16 lg:py-24">
+          <section className="bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10 py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800 mb-4">
+            <Badge variant="secondary" className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800 mb-4">
               Contacto Directo
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
@@ -84,7 +84,7 @@ export default function ContactSection() {
                       onClick={() => setRoleUser(option.id)}
                       className={`h-auto p-6 text-left transition-all duration-300 ${
                         isActive 
-                          ? 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white shadow-lg scale-105' 
+                          ? 'bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg scale-105' 
                           : 'bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700'
                       }`}
                     >
@@ -92,7 +92,7 @@ export default function ContactSection() {
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                           isActive 
                             ? 'bg-white/20' 
-                            : 'bg-gradient-to-br from-amber-500 to-yellow-600'
+                            : 'bg-gradient-to-br from-red-500 to-red-600'
                         }`}>
                           <IconComponent className={`w-6 h-6 ${
                             isActive ? 'text-white' : 'text-white'
@@ -105,7 +105,7 @@ export default function ContactSection() {
                             {option.label}
                           </h3>
                           <p className={`text-sm mt-1 ${
-                            isActive ? 'text-amber-100' : 'text-zinc-500 dark:text-zinc-400'
+                            isActive ? 'text-red-100' : 'text-zinc-500 dark:text-zinc-400'
                           }`}>
                             {option.description}
                           </p>
@@ -120,7 +120,7 @@ export default function ContactSection() {
               </div>
 
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-yellow-600/5 rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-red-600/5 rounded-xl"></div>
                 <div className="relative">
                   <AnimatePresence mode="wait">
                     {roleUser === USER_ROLES.OWNER ? (

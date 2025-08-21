@@ -23,7 +23,7 @@ const LoginForm: React.FC = () => {
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur">
       <CardHeader className="text-center">
-        <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
           <Shield className="w-8 h-8 text-white" />
         </div>
         <CardTitle className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -54,7 +54,7 @@ const LoginForm: React.FC = () => {
                 required
                 value={email}
                 onChange={handleEmailChange}
-                className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                 placeholder="Ingresa tu correo"
               />
             </div>
@@ -72,7 +72,7 @@ const LoginForm: React.FC = () => {
                 required
                 value={password}
                 onChange={handlePasswordChange}
-                className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-amber-500 dark:focus:border-amber-400"
+                className="pl-10 bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400"
                 placeholder="Ingresa tu contraseña"
               />
             </div>
@@ -81,7 +81,7 @@ const LoginForm: React.FC = () => {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold py-3 h-auto"
+            className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 h-auto"
           >
             <Shield className="w-4 h-4 mr-2" />
             {loading ? "Iniciando sesión..." : "Acceder al Panel"}

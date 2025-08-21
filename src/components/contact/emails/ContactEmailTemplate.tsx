@@ -91,16 +91,16 @@ export const ContactEmail: React.FC<ContactEmailProps> = ({
       </Preview>
 
       <Tailwind>
-        <Body className="bg-gradient-to-br from-zinc-50 to-amber-50 font-sans my-auto mx-auto max-w-[600px]">
+        <Body className="bg-gradient-to-br from-zinc-50 to-red-50 font-sans my-auto mx-auto max-w-[600px]">
           
           <Container className="mx-auto p-6 bg-white shadow-2xl rounded-2xl border border-zinc-200">
             
-            <Section className="border-t-4 border-amber-500 pt-6">
+            <Section className="border-t-4 border-red-500 pt-6">
               
               <Row className="py-6">
                 <Column>
                   <Text className="text-center font-bold text-3xl mb-3 text-zinc-900">
-                    Hola Luis Fernando,
+                    Hola J&A Inmobiliaria,
                   </Text>
                   
                   <Text className="text-center font-semibold text-xl text-zinc-700 mb-6">
@@ -115,8 +115,8 @@ export const ContactEmail: React.FC<ContactEmailProps> = ({
               {userType === "buyer" ? (
                 <Row className="py-4">
                   <Column>
-                    <div className="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-xl border border-amber-200">
-                      <Text className="text-lg font-bold text-amber-800 mb-4 border-b border-amber-300 pb-2">
+                                    <div className="bg-gradient-to-r from-red-50 to-red-100 p-6 rounded-xl border border-red-200">
+                  <Text className="text-lg font-bold text-red-800 mb-4 border-b border-red-300 pb-2">
                         📋 Información del Comprador
                       </Text>
                       
@@ -139,7 +139,7 @@ export const ContactEmail: React.FC<ContactEmailProps> = ({
                         </Text>
                       </div>
                       
-                      <Text className="text-lg font-bold text-amber-800 mt-6 mb-4 border-b border-amber-300 pb-2">
+                                              <Text className="text-lg font-bold text-red-800 mt-6 mb-4 border-b border-red-300 pb-2">
                         🏠 Preferencias de Propiedad
                       </Text>
                       
@@ -187,7 +187,7 @@ export const ContactEmail: React.FC<ContactEmailProps> = ({
                       
                       {comentariosAdicionales && (
                         <>
-                          <Text className="text-lg font-bold text-amber-800 mt-6 mb-4 border-b border-amber-300 pb-2">
+                          <Text className="text-lg font-bold text-red-800 mt-6 mb-4 border-b border-red-300 pb-2">
                             💬 Comentarios Adicionales
                           </Text>
                           <Text className="text-base bg-zinc-50 p-4 rounded-lg border border-zinc-200">
@@ -399,7 +399,7 @@ export const ContactEmail: React.FC<ContactEmailProps> = ({
             </Section>
             
             <Text className="text-center text-sm text-zinc-500 py-6 border-t border-zinc-200">
-              © 2024 | Luis Fernando Realtor | Colombia | www.luisfernandorealtor.com
+              © 2024 | J&A Inmobiliaria | Colombia | www.jainmobiliaria.com
             </Text>
           </Container>
         </Body>
