@@ -51,6 +51,7 @@ export function PropertyImage({
       <Image
         {...imageProps}
         fill
+        alt={alt}
       />
     );
   }
@@ -60,6 +61,7 @@ export function PropertyImage({
       {...imageProps}
       width={width || 800}
       height={height || 600}
+      alt={alt}
     />
   );
 } 

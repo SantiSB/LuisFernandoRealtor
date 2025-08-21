@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useContactFormLogic } from "@/hooks/useContactFormLogic";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
@@ -293,11 +292,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
               whileHover="hover"
               whileTap="tap"
             >
-              <Button
+              <motion.button
                 disabled={loading}
                 type="submit"
-                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
-                variants={buttonVariants}
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
               >
                 {loading ? (
                   <motion.div 
@@ -309,7 +307,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
                   <Send className="w-6 h-6 mr-3" />
                 )}
                 {loading ? "Enviando Mensaje..." : "Enviar Mensaje"}
-              </Button>
+              </motion.button>
             </motion.div>
 
             <motion.div 
