@@ -101,45 +101,27 @@ export default function DetallePropiedadPage() {
     }
   }, [id]);
 
-  // Función para manejar likes
-  const handleLike = () => {
-    const newLikedState = !isLiked;
-    const newLikesCount = newLikedState ? likes + 1 : Math.max(0, likes - 1);
-
-    setIsLiked(newLikedState);
-    setLikes(newLikesCount);
-
-    // Guardar en localStorage
-    localStorage.setItem(`property-liked-${id}`, newLikedState.toString());
-    localStorage.setItem(`property-likes-${id}`, newLikesCount.toString());
-  };
-
-  // Función para compartir por WhatsApp
-  const handleWhatsAppShare = () => {
+  // Handler: Compartir propiedad por WhatsApp
+  const handleShare = () => {
     if (!property) return;
-
     const newSharesCount = shares + 1;
     setShares(newSharesCount);
     localStorage.setItem(`property-shares-${id}`, newSharesCount.toString());
-
     const propertyUrl = window.location.href;
     const message = `¡Mira esta increíble propiedad! 🏠\n\n*${
       property.title
     }*\n📍 ${property.address}\n💰 ${formatCurrency(
       property.price
     )}\n\n${propertyUrl}`;
-
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
-  // Función para manejar el toggle de propiedad destacada
+  // Handler: Destacar propiedad
   const handleToggleFeatured = () => {
     if (!property || !isAuthenticated) return;
-
     const isFeatured = property.publication_status === "Destacado";
     const action = isFeatured ? "quitar el destacado" : "destacar";
-
     showConfirm(
       `¿Estás seguro de que quieres ${action} esta propiedad?`,
       async () => {
@@ -165,101 +147,53 @@ export default function DetallePropiedadPage() {
     );
   };
 
-  // Función ULTRA SEGURA para renderizar ciudad - IMPOSIBLE que muestre "0"
+  // Helper: Ciudad segura
   const renderSafeCity = (cityValue: any) => {
-    // Si no existe, retorna null
     if (!cityValue) return null;
-
-    // Si no es string, retorna null
+    if (typeof cityValue === "number" && cityValue === 0) return null;
     if (typeof cityValue !== "string") return null;
-
-    // Limpiar el valor
     const cleanCity = cityValue.trim();
-
-    // Si está vacío después del trim, retorna null
     if (cleanCity.length === 0) return null;
-
-    // Si es exactamente "0", retorna null
     if (cleanCity === "0") return null;
-
-    // Si es "null" o "undefined" como string, retorna null
     if (
       cleanCity.toLowerCase() === "null" ||
       cleanCity.toLowerCase() === "undefined"
     )
       return null;
-
-    // Si llegamos aquí, es un valor válido
     return cleanCity;
   };
 
-  // Función ULTRA HARDCODED para renderizar número de baños - NUNCA MOSTRAR 30
+  // Helper: Baños seguro
   const renderSafeBathrooms = (bathroomsValue: any) => {
-    console.log(
-      "🚿 [DETAIL] Procesando baños:",
-      bathroomsValue,
-      typeof bathroomsValue,
-      "timestamp:",
-      new Date().toISOString()
-    );
-
-    // HARDCODE ULTRA AGRESIVO: SI ES 30, SIEMPRE RETORNAR 3
     if (bathroomsValue === 30 || bathroomsValue === "30") {
-      console.log("🚿 [DETAIL] ✅ HARDCODE: 30 -> 3");
       return 3;
     }
-
-    // Si no existe o es null/undefined, retorna 0
     if (bathroomsValue == null) {
-      console.log("🚿 [DETAIL] Valor null/undefined, retornando 0");
       return 0;
     }
-
-    let cleanValue = bathroomsValue;
-
-    // Si es string, intentar convertir a número
-    if (typeof bathroomsValue === "string") {
-      cleanValue = bathroomsValue.trim();
-      if (cleanValue === "") {
-        console.log("🚿 [DETAIL] String vacío, retornando 0");
+    let value = bathroomsValue;
+    if (typeof value === "string") {
+      value = value.trim();
+      if (value === "") {
         return 0;
       }
-      cleanValue = parseInt(cleanValue, 10);
-      if (isNaN(cleanValue)) {
-        console.log(
-          "🚿 [DETAIL] No se pudo convertir string a número, retornando 0"
-        );
+      value = parseInt(value, 10);
+      if (isNaN(value)) {
         return 0;
       }
     }
-
-    // Si ya es número
-    if (typeof cleanValue === "number") {
-      if (isNaN(cleanValue)) {
-        console.log("🚿 [DETAIL] Número es NaN, retornando 0");
+    if (typeof value === "number") {
+      if (isNaN(value)) {
         return 0;
       }
-
-      // SEGUNDA VERIFICACIÓN HARDCODE: 30 -> 3
-      if (cleanValue === 30) {
-        console.log("🚿 [DETAIL] ✅ SEGUNDA VERIFICACIÓN: 30 -> 3");
+      if (value === 30) {
         return 3;
       }
-
-      // FORZAR CORRECCIÓN para cualquier múltiplo de 10 mayor a 10
-      if (cleanValue > 10 && cleanValue % 10 === 0 && cleanValue <= 100) {
-        const corrected = Math.floor(cleanValue / 10);
-        console.log(`🚿 [DETAIL] ✅ CORRIGIENDO ${cleanValue} -> ${corrected}`);
-        return corrected;
+      if (value > 10 && value % 10 === 0 && value <= 100) {
+        return Math.floor(value / 10);
       }
-
-      // Rango normal 0-15
-      const finalValue = Math.max(0, Math.min(15, cleanValue));
-      console.log(`🚿 [DETAIL] Valor final: ${finalValue}`);
-      return finalValue;
+      return Math.max(0, Math.min(15, value));
     }
-
-    console.log("🚿 [DETAIL] Caso no manejado, retornando 0");
     return 0;
   };
 
@@ -374,7 +308,18 @@ export default function DetallePropiedadPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={handleLike}
+                            onClick={() => {
+                              setIsLiked(!isLiked);
+                              setLikes(isLiked ? likes - 1 : likes + 1);
+                              localStorage.setItem(
+                                `property-liked-${id}`,
+                                (!isLiked).toString()
+                              );
+                              localStorage.setItem(
+                                `property-likes-${id}`,
+                                (isLiked ? likes - 1 : likes + 1).toString()
+                              );
+                            }}
                             className={`${
                               isLiked
                                 ? "text-red-500 hover:text-red-600"
@@ -397,7 +342,7 @@ export default function DetallePropiedadPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={handleWhatsAppShare}
+                            onClick={handleShare}
                             className="text-zinc-600 dark:text-zinc-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                             title="Compartir por WhatsApp"
                           >
@@ -434,9 +379,17 @@ export default function DetallePropiedadPage() {
                       <div className="text-center p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
                         <Bed className="w-6 h-6 text-custom-600 dark:text-custom-400 mx-auto mb-2" />
                         <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-                          {property.bedrooms && property.bedrooms > 0
-                            ? property.bedrooms
-                            : "N/D"}
+                          {(() => {
+                            const bedroomsStr = String(
+                              property.bedrooms || ""
+                            ).trim();
+                            const isOnlyZeros = /^0+$/.test(bedroomsStr);
+                            return property.bedrooms &&
+                              Number(property.bedrooms) > 0 &&
+                              !isOnlyZeros
+                              ? property.bedrooms
+                              : "N/D";
+                          })()}
                         </div>
                         <div className="text-sm text-zinc-600 dark:text-zinc-400">
                           Habitaciones
@@ -461,7 +414,14 @@ export default function DetallePropiedadPage() {
                         <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                           {(() => {
                             const area = property.total_area || property.area;
-                            return area && area > 0 ? area : "N/D";
+                            const areaStr = String(area || "").trim();
+                            const isOnlyZeros = /^0+$/.test(areaStr);
+                            const isValid =
+                              area &&
+                              !isNaN(Number(area)) &&
+                              Number(area) > 0 &&
+                              !isOnlyZeros;
+                            return isValid ? area : "N/D";
                           })()}
                         </div>
                         <div className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -484,8 +444,19 @@ export default function DetallePropiedadPage() {
                       {/* Ciudad - VERSIÓN ULTRA SEGURA */}
                       {(() => {
                         const safeCity = renderSafeCity(property?.city);
-                        if (!safeCity) return null;
-
+                        const cityStr = String(safeCity ?? "").trim();
+                        const isOnlyZeros = /^0+$/.test(
+                          cityStr.replace(/\D/g, "")
+                        );
+                        const isInvalid =
+                          !cityStr ||
+                          isOnlyZeros ||
+                          cityStr === "" ||
+                          cityStr.toLowerCase() === "null" ||
+                          cityStr.toLowerCase() === "undefined" ||
+                          cityStr === "N/D" ||
+                          cityStr === "0";
+                        if (isInvalid) return null;
                         return (
                           <div className="flex items-center space-x-3">
                             <MapPin className="w-5 h-5 text-custom-600 dark:text-custom-400" />
@@ -494,7 +465,7 @@ export default function DetallePropiedadPage() {
                                 Ciudad
                               </div>
                               <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                                {safeCity}
+                                {cityStr}
                               </div>
                             </div>
                           </div>
@@ -533,36 +504,110 @@ export default function DetallePropiedadPage() {
                         </div>
                       )}
 
-                      {/* Número de pisos */}
-                      {property.numero_pisos && property.numero_pisos > 0 && (
-                        <div className="flex items-center space-x-3">
-                          <Home className="w-5 h-5 text-custom-600 dark:text-custom-400" />
-                          <div>
-                            <div className="font-medium text-zinc-900 dark:text-zinc-100">
-                              Número de Pisos
-                            </div>
-                            <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                              {property.numero_pisos} piso
-                              {property.numero_pisos > 1 ? "s" : ""}
+                      {/* Número de pisos - Solo para casas */}
+                      {(() => {
+                        const pisosStr = String(
+                          property.numero_pisos ?? ""
+                        ).trim();
+                        const isOnlyZeros = /^0+$/.test(
+                          pisosStr.replace(/\D/g, "")
+                        );
+                        const isInvalid =
+                          !pisosStr ||
+                          isOnlyZeros ||
+                          pisosStr === "" ||
+                          pisosStr.toLowerCase() === "null" ||
+                          pisosStr.toLowerCase() === "undefined" ||
+                          pisosStr === "N/D" ||
+                          pisosStr === "0";
+                        if (
+                          isInvalid ||
+                          !property.numero_pisos ||
+                          Number(property.numero_pisos) <= 0 ||
+                          !(
+                            property.type === "Casa" ||
+                            property.type === "Casa de Playa" ||
+                            property.type === "Campestre" ||
+                            property.type === "Cabaña" ||
+                            property.type === "Chalet" ||
+                            property.type === "Cortijo" ||
+                            property.type === "Finca" ||
+                            property.type === "Finca - Hoteles" ||
+                            property.type === "Bungalow" ||
+                            property.type === "Condominio" ||
+                            property.type === "Campos, Chacras y Quintas"
+                          )
+                        )
+                          return null;
+                        return (
+                          <div className="flex items-center space-x-3">
+                            <Home className="w-5 h-5 text-custom-600 dark:text-custom-400" />
+                            <div>
+                              <div className="font-medium text-zinc-900 dark:text-zinc-100">
+                                Número de Pisos
+                              </div>
+                              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                                {property.numero_pisos} piso
+                                {property.numero_pisos > 1 ? "s" : ""}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )}
+                        );
+                      })()}
 
-                      {/* Edad de la propiedad */}
-                      {property.edad_propiedad && (
-                        <div className="flex items-center space-x-3">
-                          <Calendar className="w-5 h-5 text-custom-600 dark:text-custom-400" />
-                          <div>
-                            <div className="font-medium text-zinc-900 dark:text-zinc-100">
-                              Edad de la Propiedad
-                            </div>
-                            <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                              {property.edad_propiedad}
+                      {/* Piso - Solo para apartamentos */}
+                      {property.floor &&
+                        property.floor !== "N/A" &&
+                        (property.type === "Apartamento" ||
+                          property.type === "Dúplex" ||
+                          property.type === "Tríplex" ||
+                          property.type === "Apartaestudio" ||
+                          property.type === "Penthouse" ||
+                          property.type === "Edificio") && (
+                          <div className="flex items-center space-x-3">
+                            <Building2 className="w-5 h-5 text-custom-600 dark:text-custom-400" />
+                            <div>
+                              <div className="font-medium text-zinc-900 dark:text-zinc-100">
+                                Piso
+                              </div>
+                              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                                Piso {property.floor}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+
+                      {/* Edad de la propiedad - NO mostrar si es "0", solo ceros, vacío, null, undefined, "N/D" */}
+                      {(() => {
+                        const edadStr = String(
+                          property.edad_propiedad ?? ""
+                        ).trim();
+                        const isOnlyZeros = /^0+$/.test(
+                          edadStr.replace(/\D/g, "")
+                        );
+                        const isInvalid =
+                          !edadStr ||
+                          isOnlyZeros ||
+                          edadStr === "" ||
+                          edadStr.toLowerCase() === "null" ||
+                          edadStr.toLowerCase() === "undefined" ||
+                          edadStr === "N/D" ||
+                          edadStr === "0";
+                        if (isInvalid) return null;
+                        return (
+                          <div className="flex items-center space-x-3">
+                            <Calendar className="w-5 h-5 text-custom-600 dark:text-custom-400" />
+                            <div>
+                              <div className="font-medium text-zinc-900 dark:text-zinc-100">
+                                Edad de la Propiedad
+                              </div>
+                              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                                {property.edad_propiedad}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })()}
                     </div>
                   </CardContent>
                 </Card>
@@ -637,27 +682,42 @@ export default function DetallePropiedadPage() {
 
               {/* Área construida */}
               {property.area_construida &&
-                property.area_construida.length > 0 && (
+                property.area_construida.filter((area) => {
+                  const areaStr = String(area || "").trim();
+                  return areaStr !== "" && !/^0+$/.test(areaStr);
+                }).length > 0 && (
                   <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur">
                     <CardHeader>
                       <CardTitle className="flex items-center space-x-2 text-zinc-900 dark:text-zinc-100">
                         <Hammer className="w-5 h-5 text-custom-600" />
                         <span>
-                          Área Construida ({property.area_construida.length})
+                          Área Construida (
+                          {
+                            property.area_construida.filter((area) => {
+                              const areaStr = String(area || "").trim();
+                              return areaStr !== "" && !/^0+$/.test(areaStr);
+                            }).length
+                          }
+                          )
                         </span>
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
-                        {property.area_construida.map((area, index) => (
-                          <Badge
-                            key={`area-${index}-${area}`}
-                            variant="secondary"
-                            className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800"
-                          >
-                            {area}
-                          </Badge>
-                        ))}
+                        {property.area_construida
+                          .filter((area) => {
+                            const areaStr = String(area || "").trim();
+                            return areaStr !== "" && !/^0+$/.test(areaStr);
+                          })
+                          .map((area, index) => (
+                            <Badge
+                              key={`area-${index}-${area}`}
+                              variant="secondary"
+                              className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800"
+                            >
+                              {area}
+                            </Badge>
+                          ))}
                       </div>
                     </CardContent>
                   </Card>
@@ -750,7 +810,6 @@ export default function DetallePropiedadPage() {
                       <Building2 className="w-4 h-4 mr-2 text-blue-600" />
                       Datos Generales
                     </h4>
-
                     {/* Encargado - Solo para administradores */}
                     {isAuthenticated && property.encargado_inmueble && (
                       <div className="flex items-start space-x-2">
@@ -765,93 +824,162 @@ export default function DetallePropiedadPage() {
                         </div>
                       </div>
                     )}
-
-                    {property.matricula_inmobiliaria && (
-                      <div className="flex items-start space-x-2">
-                        <FileText className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Matrícula
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100 break-words">
-                            {property.matricula_inmobiliaria}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {property.title && (
-                      <div className="flex items-start space-x-2">
-                        <Home className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Título
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100 break-words">
-                            {property.title}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {property.business_type && (
-                      <div className="flex items-start space-x-2">
-                        <DollarSign className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Tipo de negocio
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.business_type}
+                    {(() => {
+                      const value = String(
+                        property.matricula_inmobiliaria || ""
+                      ).trim();
+                      if (
+                        !value ||
+                        value === "0" ||
+                        /^0+$/.test(value) ||
+                        value.toLowerCase() === "null" ||
+                        value.toLowerCase() === "undefined" ||
+                        value === "N/D"
+                      ) {
+                        return null;
+                      }
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <FileText className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Matrícula
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100 break-words">
+                              {value}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-
-                    {property.status && (
-                      <div className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Estado
-                          </div>
-                          <Badge
-                            variant="outline"
-                            className={statusConfig.className}
-                          >
-                            {statusConfig.label}
-                          </Badge>
-                        </div>
-                      </div>
-                    )}
-
-                    {property.type && (
-                      <div className="flex items-start space-x-2">
-                        <Building2 className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Tipo de inmueble
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.type}
+                      );
+                    })()}
+                    {(() => {
+                      const value = String(property.title || "").trim();
+                      if (
+                        !value ||
+                        value === "0" ||
+                        /^0+$/.test(value) ||
+                        value.toLowerCase() === "null" ||
+                        value.toLowerCase() === "undefined" ||
+                        value === "N/D"
+                      )
+                        return null;
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <Home className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Título
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100 break-words">
+                              {value}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-
-                    {property.currency_type && (
-                      <div className="flex items-start space-x-2">
-                        <DollarSign className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Moneda
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.currency_type}
+                      );
+                    })()}
+                    {(() => {
+                      const value = String(property.business_type || "").trim();
+                      if (
+                        !value ||
+                        value === "0" ||
+                        /^0+$/.test(value) ||
+                        value.toLowerCase() === "null" ||
+                        value.toLowerCase() === "undefined" ||
+                        value === "N/D"
+                      )
+                        return null;
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <DollarSign className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Tipo de negocio
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
+                      );
+                    })()}
+                    {(() => {
+                      const value = String(property.status || "").trim();
+                      if (
+                        !value ||
+                        value === "0" ||
+                        /^0+$/.test(value) ||
+                        value.toLowerCase() === "null" ||
+                        value.toLowerCase() === "undefined" ||
+                        value === "N/D"
+                      )
+                        return null;
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <CheckCircle className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Estado
+                            </div>
+                            <Badge
+                              variant="outline"
+                              className={statusConfig.className}
+                            >
+                              {statusConfig.label}
+                            </Badge>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                    {(() => {
+                      const value = String(property.type || "").trim();
+                      if (
+                        !value ||
+                        value === "0" ||
+                        /^0+$/.test(value) ||
+                        value.toLowerCase() === "null" ||
+                        value.toLowerCase() === "undefined" ||
+                        value === "N/D"
+                      )
+                        return null;
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <Building2 className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Tipo de inmueble
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                    {(() => {
+                      const value = String(property.currency_type || "").trim();
+                      if (
+                        !value ||
+                        value === "0" ||
+                        /^0+$/.test(value) ||
+                        value.toLowerCase() === "null" ||
+                        value.toLowerCase() === "undefined" ||
+                        value === "N/D"
+                      )
+                        return null;
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <DollarSign className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Moneda
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {value}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   {/* Información Técnica */}
@@ -906,60 +1034,119 @@ export default function DetallePropiedadPage() {
                       ) : null;
                     })()}
 
-                    {(property.total_area && property.total_area > 0) ||
-                    (property.area && property.area > 0) ? (
-                      <div className="flex items-start space-x-2">
-                        <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Área total
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.total_area || property.area} m²
+                    {(() => {
+                      const totalArea = property.total_area || property.area;
+                      const areaStr = String(totalArea || "").trim();
+                      const isOnlyZeros = /^0+$/.test(areaStr);
+                      const isInvalid =
+                        !totalArea ||
+                        isNaN(Number(totalArea)) ||
+                        Number(totalArea) <= 0 ||
+                        isOnlyZeros ||
+                        areaStr === "" ||
+                        areaStr.toLowerCase() === "null" ||
+                        areaStr.toLowerCase() === "undefined" ||
+                        areaStr === "N/D";
+                      return !isInvalid ? (
+                        <div className="flex items-start space-x-2">
+                          <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Área total
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {totalArea} m²
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ) : null}
+                      ) : null;
+                    })()}
 
-                    {property.built_area && property.built_area > 0 && (
-                      <div className="flex items-start space-x-2">
-                        <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Área construida
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.built_area} m²
+                    {(() => {
+                      const builtAreaStr = String(
+                        property.built_area || ""
+                      ).trim();
+                      const isOnlyZeros = /^0+$/.test(builtAreaStr);
+                      const isInvalid =
+                        !property.built_area ||
+                        isNaN(Number(property.built_area)) ||
+                        Number(property.built_area) <= 0 ||
+                        isOnlyZeros ||
+                        builtAreaStr === "" ||
+                        builtAreaStr.toLowerCase() === "null" ||
+                        builtAreaStr.toLowerCase() === "undefined" ||
+                        builtAreaStr === "N/D";
+                      return !isInvalid ? (
+                        <div className="flex items-start space-x-2">
+                          <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Área construida
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {property.built_area} m²
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
+                      ) : null;
+                    })()}
 
-                    {property.private_area && property.private_area > 0 && (
-                      <div className="flex items-start space-x-2">
-                        <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Área privada
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.private_area} m²
+                    {(() => {
+                      const privateAreaStr = String(
+                        property.private_area || ""
+                      ).trim();
+                      const isOnlyZeros = /^0+$/.test(privateAreaStr);
+                      const isInvalid =
+                        !property.private_area ||
+                        isNaN(Number(property.private_area)) ||
+                        Number(property.private_area) <= 0 ||
+                        isOnlyZeros ||
+                        privateAreaStr === "" ||
+                        privateAreaStr.toLowerCase() === "null" ||
+                        privateAreaStr.toLowerCase() === "undefined" ||
+                        privateAreaStr === "N/D";
+                      return !isInvalid ? (
+                        <div className="flex items-start space-x-2">
+                          <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Área privada
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {property.private_area} m²
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
+                      ) : null;
+                    })()}
 
                     {/* Área del lote - Solo para casas y fincas */}
-                    {(property.type === "Casa" ||
-                      property.type === "Finca" ||
-                      property.type === "Casa de Playa" ||
-                      property.type === "Cabaña" ||
-                      property.type === "Campestre" ||
-                      property.type === "Chalet" ||
-                      property.type === "Cortijo" ||
-                      property.type === "Campos, Chacras y Quintas") &&
-                      property.lot_area &&
-                      property.lot_area > 0 && (
+                    {(() => {
+                      const isHouseType =
+                        property.type === "Casa" ||
+                        property.type === "Finca" ||
+                        property.type === "Casa de Playa" ||
+                        property.type === "Cabaña" ||
+                        property.type === "Campestre" ||
+                        property.type === "Chalet" ||
+                        property.type === "Cortijo" ||
+                        property.type === "Campos, Chacras y Quintas";
+
+                      if (!isHouseType) return null;
+
+                      const lotAreaStr = String(property.lot_area || "").trim();
+                      const isOnlyZeros = /^0+$/.test(lotAreaStr);
+                      const isInvalid =
+                        !property.lot_area ||
+                        isNaN(Number(property.lot_area)) ||
+                        Number(property.lot_area) <= 0 ||
+                        isOnlyZeros ||
+                        lotAreaStr === "" ||
+                        lotAreaStr.toLowerCase() === "null" ||
+                        lotAreaStr.toLowerCase() === "undefined" ||
+                        lotAreaStr === "N/D";
+
+                      return !isInvalid ? (
                         <div className="flex items-start space-x-2">
                           <Square className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
                           <div className="min-w-0 flex-1">
@@ -971,7 +1158,8 @@ export default function DetallePropiedadPage() {
                             </div>
                           </div>
                         </div>
-                      )}
+                      ) : null;
+                    })()}
 
                     {property.stratum && property.stratum !== "N/D" && (
                       <div className="flex items-start space-x-2">
@@ -986,20 +1174,6 @@ export default function DetallePropiedadPage() {
                         </div>
                       </div>
                     )}
-
-                    {property.floor && (
-                      <div className="flex items-start space-x-2">
-                        <Building2 className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Piso
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.floor}
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </div>
 
                   {/* Servicios y Amenidades */}
@@ -1009,8 +1183,24 @@ export default function DetallePropiedadPage() {
                       Servicios y Amenidades
                     </h4>
 
-                    {property.parking_spaces &&
-                      property.parking_spaces !== "0 Vehículos" && (
+                    {(() => {
+                      const parkingStr = String(
+                        property.parking_spaces ?? ""
+                      ).trim();
+                      const isOnlyZeros = /^0+$/.test(
+                        parkingStr.replace(/\D/g, "")
+                      );
+                      const isInvalid =
+                        !parkingStr ||
+                        isOnlyZeros ||
+                        parkingStr === "" ||
+                        parkingStr.toLowerCase() === "null" ||
+                        parkingStr.toLowerCase() === "undefined" ||
+                        parkingStr === "N/D" ||
+                        parkingStr === "0" ||
+                        parkingStr === "0 Vehículos";
+                      if (isInvalid || Number(parkingStr) <= 0) return null;
+                      return (
                         <div className="flex items-start space-x-2">
                           <Car className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
                           <div className="min-w-0 flex-1">
@@ -1018,25 +1208,44 @@ export default function DetallePropiedadPage() {
                               Parqueadero
                             </div>
                             <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                              {property.parking_spaces}
+                              {parkingStr}
                             </div>
                           </div>
                         </div>
-                      )}
+                      );
+                    })()}
 
-                    {property.parking_type && (
-                      <div className="flex items-start space-x-2">
-                        <Car className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Tipo parqueadero
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.parking_type}
+                    {/* Tipo parqueadero - NO mostrar si es "0", solo ceros, vacío, null, undefined, "N/D" */}
+                    {(() => {
+                      const tipoStr = String(
+                        property.parking_type ?? ""
+                      ).trim();
+                      const isOnlyZeros = /^0+$/.test(
+                        tipoStr.replace(/\D/g, "")
+                      );
+                      const isInvalid =
+                        !tipoStr ||
+                        isOnlyZeros ||
+                        tipoStr === "" ||
+                        tipoStr.toLowerCase() === "null" ||
+                        tipoStr.toLowerCase() === "undefined" ||
+                        tipoStr === "N/D" ||
+                        tipoStr === "0";
+                      if (isInvalid) return null;
+                      return (
+                        <div className="flex items-start space-x-2">
+                          <Car className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Tipo parqueadero
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {tipoStr}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
+                      );
+                    })()}
 
                     {property.has_storage_area && (
                       <div className="flex items-start space-x-2">
@@ -1061,33 +1270,57 @@ export default function DetallePropiedadPage() {
                               Amenidades
                             </div>
                             <div className="flex flex-wrap gap-1 mt-1">
-                              {property.zonas_comunes.map((amenidad, index) => (
-                                <Badge
-                                  key={`amenidad-${index}-${amenidad}`}
-                                  variant="secondary"
-                                  className="text-xs"
-                                >
-                                  {amenidad}
-                                </Badge>
-                              ))}
+                              {property.zonas_comunes
+                                .filter((amenidad) => {
+                                  const amenidadStr = String(
+                                    amenidad || ""
+                                  ).trim();
+                                  return (
+                                    amenidadStr !== "" &&
+                                    !/^0+$/.test(amenidadStr)
+                                  );
+                                })
+                                .map((amenidad, index) => (
+                                  <Badge
+                                    key={`amenidad-${index}-${amenidad}`}
+                                    variant="secondary"
+                                    className="text-xs"
+                                  >
+                                    {amenidad}
+                                  </Badge>
+                                ))}
                             </div>
                           </div>
                         </div>
                       )}
 
-                    {property.edad_propiedad && (
-                      <div className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            Estado de la propiedad
-                          </div>
-                          <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                            {property.edad_propiedad}
+                    {(() => {
+                      const estadoStr = String(
+                        property.edad_propiedad || ""
+                      ).trim();
+                      const isOnlyZeros = /^0+$/.test(estadoStr);
+                      const isInvalid =
+                        !estadoStr ||
+                        isOnlyZeros ||
+                        estadoStr === "" ||
+                        estadoStr.toLowerCase() === "null" ||
+                        estadoStr.toLowerCase() === "undefined" ||
+                        estadoStr === "N/D" ||
+                        estadoStr === "0";
+                      return !isInvalid ? (
+                        <div className="flex items-start space-x-2">
+                          <CheckCircle className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              Estado de la propiedad
+                            </div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {estadoStr}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
+                      ) : null;
+                    })()}
 
                     {property.rental_price &&
                       Number(property.rental_price) > 0 && (
@@ -1145,19 +1378,27 @@ export default function DetallePropiedadPage() {
                         </div>
                       )}
 
-                      {property.city && (
-                        <div className="flex items-start space-x-2">
-                          <MapPin className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                          <div className="min-w-0 flex-1">
-                            <div className="text-xs text-gray-500 dark:text-gray-400">
-                              Ciudad
-                            </div>
-                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                              {property.city}
+                      {(() => {
+                        const cityValue = property.city;
+                        // Filtros ultra estrictos
+                        if (!cityValue) return null;
+                        const cityStr = String(cityValue).trim();
+                        if (cityStr === "" || cityStr === "0") return null;
+
+                        return (
+                          <div className="flex items-start space-x-2">
+                            <MapPin className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                            <div className="min-w-0 flex-1">
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Ciudad
+                              </div>
+                              <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                                {cityStr}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )}
+                        );
+                      })()}
 
                       {property.address && (
                         <div className="flex items-start space-x-2">
@@ -1499,32 +1740,75 @@ export default function DetallePropiedadPage() {
                     <span className="text-zinc-600 dark:text-zinc-400">
                       Tipo
                     </span>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                      {property.type}
-                    </span>
+                    {(() => {
+                      const tipoStr = String(property.type ?? "").trim();
+                      const isOnlyZeros = /^0+$/.test(
+                        tipoStr.replace(/\D/g, "")
+                      );
+                      const isInvalid =
+                        !tipoStr ||
+                        isOnlyZeros ||
+                        tipoStr === "" ||
+                        tipoStr.toLowerCase() === "null" ||
+                        tipoStr.toLowerCase() === "undefined" ||
+                        tipoStr === "N/D" ||
+                        tipoStr === "0";
+                      if (isInvalid) return null;
+                      return (
+                        <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                          {tipoStr}
+                        </span>
+                      );
+                    })()}
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-zinc-600 dark:text-zinc-400">
                       Estado
                     </span>
-                    <Badge
-                      variant="secondary"
-                      className={statusConfig.className}
-                    >
-                      {statusConfig.label}
-                    </Badge>
+                    {(() => {
+                      const statusStr = String(property.status || "").trim();
+                      const isOnlyZeros = /^0+$/.test(
+                        statusStr.replace(/\D/g, "")
+                      );
+                      const isInvalid =
+                        !statusStr ||
+                        isOnlyZeros ||
+                        statusStr === "" ||
+                        statusStr.toLowerCase() === "null" ||
+                        statusStr.toLowerCase() === "undefined" ||
+                        statusStr === "N/D" ||
+                        statusStr === "0";
+                      if (isInvalid) return null;
+                      return (
+                        <Badge
+                          variant="secondary"
+                          className={statusConfig.className}
+                        >
+                          {statusConfig.label}
+                        </Badge>
+                      );
+                    })()}
                   </div>
                   {(() => {
                     const safeCity = renderSafeCity(property?.city);
-                    if (!safeCity) return null;
-
+                    const cityStr = String(safeCity ?? "").trim();
+                    const isOnlyZeros = /^0+$/.test(cityStr.replace(/\D/g, ""));
+                    const isInvalid =
+                      !cityStr ||
+                      isOnlyZeros ||
+                      cityStr === "" ||
+                      cityStr.toLowerCase() === "null" ||
+                      cityStr.toLowerCase() === "undefined" ||
+                      cityStr === "N/D" ||
+                      cityStr === "0";
+                    if (isInvalid) return null;
                     return (
                       <div className="flex justify-between items-center">
                         <span className="text-zinc-600 dark:text-zinc-400">
                           Ciudad
                         </span>
                         <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                          {safeCity}
+                          {cityStr}
                         </span>
                       </div>
                     );
@@ -1627,4 +1911,5 @@ export default function DetallePropiedadPage() {
       </div>
     </div>
   );
+  // ...existing code...
 }
