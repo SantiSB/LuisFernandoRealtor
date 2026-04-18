@@ -8,8 +8,8 @@ export async function POST(request: Request) {
   const dataForm = await request.json();
   try {
     const data = await resend.emails.send({
-              from: "J&A Inmobiliaria <admin@jainmobiliaria.com>",
-              to: ["a.santiago.salas.b@gmail.com", "info@jainmobiliaria.com"],
+      from: "Mena Inmobiliaria <contacto@menainmobiliaria.com>",
+      to: ["contacto@menainmobiliaria.com", "ventas@menainmobiliaria.com"],
       subject: "Nuevo mensaje desde tu sitio web",
       text: "",
       react: React.createElement(ContactEmail, dataForm),

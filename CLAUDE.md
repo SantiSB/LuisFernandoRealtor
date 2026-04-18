@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-Real estate platform (J&A Inmobiliaria) built with Next.js 14 App Router, TypeScript, Firebase, and React Query. Allows property listing, admin management, contact forms, and email notifications.
+Real estate platform (Mena Inmobiliaria) built with Next.js 14 App Router, TypeScript, Firebase, and React Query. Allows property listing, admin management, contact forms, and email notifications.
 
 ## Commands
 
@@ -82,7 +82,7 @@ src/
 ## Tailwind theme
 
 Custom colors defined in `tailwind.config.ts`:
-- Primary: red `#C12628`
+- Primary: navy / royal blue scale (see `tailwind.config.ts`, `primary.*`)
 - Dark mode enabled via `class` strategy
 - Always use theme tokens (`text-primary`, `bg-surface`) — never raw hex values
 

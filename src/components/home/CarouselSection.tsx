@@ -87,22 +87,22 @@ export default function CarouselSection() {
   // Estados de carga y error
   if (isLoading) {
     return (
-      <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-red-50/20 dark:from-zinc-900 dark:via-black dark:to-red-900/10 py-16 lg:py-24">
+      <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-blue-50/20 dark:from-zinc-900 dark:via-black dark:to-blue-900/10 py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
-            <Badge variant="secondary" className="mb-4 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800">
+            <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800">
               Propiedades Destacadas
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
               Propiedades de
-              <span className="block bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                 Lujo Exclusivo
               </span>
             </h2>
           </div>
           <div className="flex items-center justify-center py-16">
             <div className="text-center">
-              <Loader2 className="h-12 w-12 animate-spin text-red-600 dark:text-red-400 mx-auto mb-4" />
+              <Loader2 className="h-12 w-12 animate-spin text-blue-600 dark:text-blue-400 mx-auto mb-4" />
               <p className="text-zinc-600 dark:text-zinc-400">Cargando propiedades...</p>
             </div>
           </div>
@@ -113,15 +113,15 @@ export default function CarouselSection() {
 
   if (error || !properties || properties.length === 0) {
     return (
-      <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-red-50/20 dark:from-zinc-900 dark:via-black dark:to-red-900/10 py-16 lg:py-24">
+      <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-blue-50/20 dark:from-zinc-900 dark:via-black dark:to-blue-900/10 py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
-            <Badge variant="secondary" className="mb-4 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800">
+            <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800">
               Propiedades Destacadas
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
               Propiedades de
-              <span className="block bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                 Lujo Exclusivo
               </span>
             </h2>
@@ -139,7 +139,7 @@ export default function CarouselSection() {
   // Verificar que tenemos una propiedad válida
   if (!currentProperty) {
     return (
-      <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-red-50/20 dark:from-zinc-900 dark:via-black dark:to-red-900/10 py-16 lg:py-24">
+      <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-blue-50/20 dark:from-zinc-900 dark:via-black dark:to-blue-900/10 py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -155,16 +155,16 @@ export default function CarouselSection() {
   const hasMultipleImages = currentProperty.images && currentProperty.images.length > 1;
 
   return (
-    <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-red-50/20 dark:from-zinc-900 dark:via-black dark:to-red-900/10 py-16 lg:py-24">
+    <section className="relative w-full bg-gradient-to-br from-zinc-50 via-white to-blue-50/20 dark:from-zinc-900 dark:via-black dark:to-blue-900/10 py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-12 lg:mb-16">
-          <Badge variant="secondary" className="mb-4 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800">
+          <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800">
             Propiedades Destacadas
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
             Propiedades de
-            <span className="block bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
               Lujo Exclusivo
             </span>
           </h2>
@@ -267,14 +267,14 @@ export default function CarouselSection() {
                       </div>
                       
                       <div className="text-right">
-                        <div className="text-2xl lg:text-3xl font-bold text-red-600 dark:text-red-400">
+                        <div className="text-2xl lg:text-3xl font-bold text-blue-600 dark:text-blue-400">
                           {formatPrice(currentProperty.price)}
                         </div>
                         <Link href={`/propiedades/${currentProperty.id}`}>
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="mt-2 border-red-300 text-red-700 hover:bg-red-50 dark:border-red-600 dark:text-red-300 dark:hover:bg-red-900/30"
+                            className="mt-2 border-blue-300 text-blue-700 hover:bg-primary-50 dark:border-blue-600 dark:text-blue-300 dark:hover:bg-blue-900/30"
                           >
                             Ver Detalles
                           </Button>
@@ -314,7 +314,7 @@ export default function CarouselSection() {
                 onClick={() => setActiveIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === activeIndex
-                    ? "bg-red-600 dark:bg-red-400 w-8"
+                    ? "bg-primary-600 dark:bg-primary-400 w-8"
                     : "bg-zinc-300 dark:bg-zinc-600 hover:bg-zinc-400 dark:hover:bg-zinc-500"
                 }`}
               >
@@ -328,7 +328,7 @@ export default function CarouselSection() {
           <Link href="/propiedades">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Ver Todas las Propiedades
             </Button>

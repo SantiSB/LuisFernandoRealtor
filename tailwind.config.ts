@@ -11,18 +11,18 @@ const config: Config = {
   	extend: {
   		colors: {
   			primary: {
-  				'50': '#FEF2F2',
-  				'100': '#FEE2E2',
-  				'200': '#FECACA',
-  				'300': '#FCA5A5',
-  				'400': '#F87171',
-  				'500': '#EF4444',
-  				'600': '#DC2626',
-  				'700': '#B91C1C',
-  				'800': '#991B1B',
-  				'900': '#7F1D1D',
-  				'950': '#450A0A',
-  				DEFAULT: '#C12628',
+  				'50': '#EFF4FB',
+  				'100': '#DCE6F5',
+  				'200': '#B9CDE8',
+  				'300': '#8BADD8',
+  				'400': '#5B82D4',
+  				'500': '#2E5BBA',
+  				'600': '#1E40AF',
+  				'700': '#1E3A8A',
+  				'800': '#172554',
+  				'900': '#0F172A',
+  				'950': '#0A1628',
+  				DEFAULT: '#1E3A8A',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {

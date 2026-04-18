@@ -1,5 +1,11 @@
 import { Field, LegalSituation, PaymentMethod, ProjectType, PropertyType, City, PersonalData, Role } from "@/types/forms.d";
 
+/** Canonical site URL for metadata (set `NEXT_PUBLIC_SITE_URL` on Netlify to the demo domain). */
+export const SITE_ORIGIN = (
+  (typeof process !== "undefined" && process.env.NEXT_PUBLIC_SITE_URL) ||
+  "https://www.menainmobiliaria.com"
+).replace(/\/$/, "");
+
 export const USER_ROLES = {
     [Role.Owner]: 'Propietario',
     [Role.Buyer]: 'Comprador',

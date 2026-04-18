@@ -21,7 +21,7 @@ export interface ReverseGeocodingResult {
 
 class GeocodingService {
   private readonly baseUrl = 'https://nominatim.openstreetmap.org';
-  private readonly userAgent = 'JYAInmobiliaria/1.0';
+  private readonly userAgent = 'MenaInmobiliaria/1.0';
 
   /**
    * Geocodificar: Convertir dirección en coordenadas

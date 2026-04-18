@@ -72,7 +72,7 @@ export default function PropiedadesPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
+      <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-primary-50/30 dark:from-zinc-900 dark:via-black dark:to-primary-900/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
@@ -88,9 +88,9 @@ export default function PropiedadesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-primary-50/30 dark:from-zinc-900 dark:via-black dark:to-primary-900/10">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white py-20 lg:py-32">
+      <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 lg:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.05),transparent_50%)]"></div>
         
@@ -132,7 +132,7 @@ export default function PropiedadesPage() {
           <CardHeader className="pb-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center">
                   <Filter className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -155,7 +155,7 @@ export default function PropiedadesPage() {
                     setMinPrice('');
                     setMaxPrice('');
                   }}
-                  className="border-red-300 text-red-600 hover:bg-red-50 dark:border-red-600 dark:text-red-400 dark:hover:bg-red-900/20"
+                  className="border-primary-300 text-primary-600 hover:bg-primary-50 dark:border-primary-600 dark:text-primary-400 dark:hover:bg-primary-900/20"
                 >
                   <X className="w-4 h-4 mr-2" />
                   Limpiar Filtros
@@ -166,18 +166,18 @@ export default function PropiedadesPage() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
               <div className="relative group">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-400 group-focus-within:text-red-500 transition-colors" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-400 group-focus-within:text-primary-500 transition-colors" />
                 <Input
                   type="text"
                   placeholder="Buscar propiedades..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="pl-12 pr-4 py-3 border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-red-500 dark:focus:border-red-400 rounded-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600"
+                  className="pl-12 pr-4 py-3 border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600"
                 />
               </div>
 
               <Select value={city} onValueChange={setCity}>
-                <SelectTrigger className="border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-3 transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600">
+                <SelectTrigger className="border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-3 transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600">
                   <SelectValue placeholder="Ciudad" />
                 </SelectTrigger>
                 <SelectContent>
@@ -190,7 +190,7 @@ export default function PropiedadesPage() {
               </Select>
 
               <Select value={type} onValueChange={setType}>
-                <SelectTrigger className="border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-3 transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600">
+                <SelectTrigger className="border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-3 transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600">
                   <SelectValue placeholder="Tipo" />
                 </SelectTrigger>
                 <SelectContent>
@@ -206,24 +206,24 @@ export default function PropiedadesPage() {
               </Select>
 
               <div className="relative group">
-                <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-400 group-focus-within:text-red-500 transition-colors" />
+                <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-400 group-focus-within:text-primary-500 transition-colors" />
                 <Input
                   type="number"
                   placeholder="Precio mínimo"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="pl-12 pr-4 py-3 border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-red-500 dark:focus:border-red-400 rounded-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600"
+                  className="pl-12 pr-4 py-3 border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600"
                 />
               </div>
 
               <div className="relative group">
-                <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-400 group-focus-within:text-red-500 transition-colors" />
+                <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-400 group-focus-within:text-primary-500 transition-colors" />
                 <Input
                   type="number"
                   placeholder="Precio máximo"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="pl-12 pr-4 py-3 border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-red-500 dark:focus:border-red-400 rounded-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600"
+                  className="pl-12 pr-4 py-3 border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600"
                 />
               </div>
 
@@ -236,7 +236,7 @@ export default function PropiedadesPage() {
                   setMinPrice('');
                   setMaxPrice('');
                 }}
-                className="border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-6 py-3 transition-all duration-300 hover:border-red-300 dark:hover:border-red-600"
+                className="border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-6 py-3 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600"
               >
                 <X className="w-4 h-4 mr-2" />
                 Limpiar
@@ -249,7 +249,7 @@ export default function PropiedadesPage() {
         {isLoading ? (
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
                 <Loader2 className="h-8 w-8 animate-spin text-white" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
@@ -265,9 +265,9 @@ export default function PropiedadesPage() {
             {total > 0 && (
               <div className="mb-12 text-center">
                 <div className="inline-flex items-center space-x-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur rounded-2xl px-6 py-4 shadow-lg">
-                  <Zap className="w-5 h-5 text-red-500" />
+                  <Zap className="w-5 h-5 text-primary-500" />
                   <p className="text-lg text-zinc-700 dark:text-zinc-300">
-                    Mostrando <span className="font-bold text-red-600 dark:text-red-400">{properties.length}</span> de <span className="font-bold text-red-600 dark:text-red-400">{total}</span> propiedades
+                    Mostrando <span className="font-bold text-primary-600 dark:text-primary-400">{properties.length}</span> de <span className="font-bold text-primary-600 dark:text-primary-400">{total}</span> propiedades
                   </p>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function PropiedadesPage() {
                   variant="outline"
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-6 py-3 transition-all duration-300 hover:border-red-300 dark:hover:border-red-600 disabled:opacity-50"
+                  className="border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-6 py-3 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 disabled:opacity-50"
                 >
                   <ChevronLeft className="w-5 h-5 mr-2" />
                   Anterior
@@ -295,8 +295,8 @@ export default function PropiedadesPage() {
                       variant={currentPage === page ? "default" : "outline"}
                       onClick={() => handlePageChange(page)}
                       className={currentPage === page 
-                        ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl px-4 py-3 shadow-lg" 
-                        : "border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-4 py-3 transition-all duration-300 hover:border-red-300 dark:hover:border-red-600"
+                        ? "bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-xl px-4 py-3 shadow-lg" 
+                        : "border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-4 py-3 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600"
                       }
                     >
                       {page}
@@ -308,7 +308,7 @@ export default function PropiedadesPage() {
                   variant="outline"
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-6 py-3 transition-all duration-300 hover:border-red-300 dark:hover:border-red-600 disabled:opacity-50"
+                  className="border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-xl px-6 py-3 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 disabled:opacity-50"
                 >
                   Siguiente
                   <ChevronRight className="w-5 h-5 ml-2" />
@@ -320,7 +320,7 @@ export default function PropiedadesPage() {
             {properties.length === 0 && !isLoading && (
               <div className="text-center py-20">
                 <div className="max-w-md mx-auto">
-                  <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl">
+                  <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl">
                     <Building2 className="h-12 w-12 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
@@ -337,7 +337,7 @@ export default function PropiedadesPage() {
                       setMinPrice('');
                       setMaxPrice('');
                     }}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg"
+                    className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg"
                   >
                     <X className="w-5 h-5 mr-2" />
                     Limpiar Filtros

@@ -160,7 +160,7 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900">
                   <div className="text-center text-zinc-400 dark:text-zinc-500">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <ImageIcon className="h-8 w-8 text-white" />
                     </div>
                     <span className="text-sm font-medium">Sin imagen</span>
@@ -226,7 +226,7 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.4 }}
             >
-              <Badge variant="outline" className="border-red-200 text-red-700 dark:border-red-800 dark:text-red-300 px-3 py-1">
+              <Badge variant="outline" className="border-primary-200 text-primary-700 dark:border-primary-800 dark:text-primary-300 px-3 py-1">
                 <Building2 className="w-3 h-3 mr-1" />
                 {property.type}
               </Badge>
@@ -242,11 +242,11 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.4 }}
             >
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 line-clamp-1 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 line-clamp-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                 {property.title}
               </h3>
               <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400 mb-3">
-                <MapPin className="w-4 h-4 text-red-500" />
+                <MapPin className="w-4 h-4 text-primary-500" />
                 <span className="text-sm line-clamp-1">{property.address}</span>
               </div>
             </motion.div>
@@ -258,13 +258,13 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.4 }}
             >
-              <div className="text-2xl font-black text-red-600 dark:text-red-400">
+              <div className="text-2xl font-black text-primary-600 dark:text-primary-400">
                 ${property.price.toLocaleString()}
               </div>
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                className="text-primary-600 hover:text-primary-700 hover:bg-primary-50 dark:text-primary-400 dark:hover:bg-primary-900/20"
               >
                 <Phone className="w-4 h-4 mr-1" />
                 Contactar
@@ -281,19 +281,19 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
               <div className="flex items-center space-x-4 text-sm text-zinc-600 dark:text-zinc-400">
                 {property.bedrooms && (
                   <div className="flex items-center space-x-1">
-                    <Bed className="w-4 h-4 text-red-500" />
+                    <Bed className="w-4 h-4 text-primary-500" />
                     <span className="font-medium">{property.bedrooms}</span>
                   </div>
                 )}
                 {property.bathrooms && (
                   <div className="flex items-center space-x-1">
-                    <Bath className="w-4 h-4 text-red-500" />
+                    <Bath className="w-4 h-4 text-primary-500" />
                     <span className="font-medium">{property.bathrooms}</span>
                   </div>
                 )}
                 {property.area && (
                   <div className="flex items-center space-x-1">
-                    <Square className="w-4 h-4 text-red-500" />
+                    <Square className="w-4 h-4 text-primary-500" />
                     <span className="font-medium">{property.area} m²</span>
                   </div>
                 )}
@@ -323,7 +323,7 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
                     variant="outline"
                     size="sm"
                     onClick={(e) => { e.preventDefault(); onEdit(property); }}
-                    className="flex-1 border-red-300 text-red-700 hover:bg-red-50 dark:border-red-600 dark:text-red-300 dark:hover:bg-red-900/30 rounded-xl"
+                    className="flex-1 border-primary-300 text-primary-700 hover:bg-primary-50 dark:border-primary-600 dark:text-primary-300 dark:hover:bg-primary-900/30 rounded-xl"
                   >
                     <Edit className="w-4 h-4 mr-2" />
                     Editar
@@ -334,7 +334,7 @@ function PropertyCard({ property, onEdit, onDelete }: any) {
                     variant="outline"
                     size="sm"
                     onClick={(e) => { e.preventDefault(); onDelete(property.id); }}
-                    className="border-red-300 text-red-700 hover:bg-red-50 dark:border-red-600 dark:text-red-300 dark:hover:bg-red-900/30 rounded-xl"
+                    className="border-primary-300 text-primary-700 hover:bg-primary-50 dark:border-primary-600 dark:text-primary-300 dark:hover:bg-primary-900/30 rounded-xl"
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>
@@ -360,7 +360,7 @@ export default function PropertyList({ properties, onEdit, onDelete }: PropertyL
         <Card className="max-w-md mx-auto bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-0 shadow-2xl rounded-3xl">
           <CardContent className="p-12">
             <motion.div 
-              className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl"
+              className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl"
               animate={{ 
                 scale: [1, 1.1, 1],
                 rotate: [0, 5, -5, 0]

@@ -55,7 +55,7 @@ const headerVariants = {
 const buttonVariants = {
   hover: {
     scale: 1.02,
-    boxShadow: "0 20px 25px -5px rgba(220, 38, 38, 0.3), 0 10px 10px -5px rgba(220, 38, 38, 0.2)",
+    boxShadow: "0 20px 25px -5px rgba(30, 58, 138, 0.3), 0 10px 10px -5px rgba(30, 58, 138, 0.2)",
     transition: {
       duration: 0.3,
       ease: "easeOut"
@@ -88,7 +88,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
             variants={headerVariants}
           >
             <motion.div 
-              className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-xl"
+              className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-xl"
               whileHover={{ 
                 rotate: 360,
                 scale: 1.1
@@ -115,7 +115,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
             
             <motion.div className="space-y-3" variants={itemVariants}>
               <Label htmlFor="nombre" className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center">
-                <User className="w-4 h-4 mr-2 text-red-500" />
+                <User className="w-4 h-4 mr-2 text-primary-500" />
                 Nombre Completo *
               </Label>
               {errors.nombre && (
@@ -137,7 +137,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
                   id="nombre"
                   type="text"
                   {...register("nombre")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
                     errors.nombre ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="Ingresa tu nombre completo"
@@ -147,7 +147,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
 
             <motion.div className="space-y-3" variants={itemVariants}>
               <Label htmlFor="correo" className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center">
-                <Mail className="w-4 h-4 mr-2 text-red-500" />
+                <Mail className="w-4 h-4 mr-2 text-primary-500" />
                 Correo Electrónico *
               </Label>
               {errors.correo && (
@@ -169,7 +169,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
                   id="correo"
                   type="email"
                   {...register("correo")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
                     errors.correo ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="tu@email.com"
@@ -179,7 +179,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
 
             <motion.div className="space-y-3" variants={itemVariants}>
               <Label htmlFor="telefono" className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center">
-                <Phone className="w-4 h-4 mr-2 text-red-500" />
+                <Phone className="w-4 h-4 mr-2 text-primary-500" />
                 Teléfono *
               </Label>
               {errors.telefono && (
@@ -201,7 +201,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
                   id="telefono"
                   type="tel"
                   {...register("telefono")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
                     errors.telefono ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="+57 300 123 4567"
@@ -211,7 +211,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
 
             <motion.div className="space-y-3" variants={itemVariants}>
               <Label htmlFor="asunto" className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center">
-                <Zap className="w-4 h-4 mr-2 text-red-500" />
+                <Zap className="w-4 h-4 mr-2 text-primary-500" />
                 Asunto *
               </Label>
               {errors.asunto && (
@@ -233,7 +233,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
                   id="asunto"
                   type="text"
                   {...register("asunto")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 ${
                     errors.asunto ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="Asunto de tu consulta"
@@ -243,7 +243,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
 
             <motion.div className="space-y-3" variants={itemVariants}>
               <Label htmlFor="mensaje" className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center">
-                <MessageSquare className="w-4 h-4 mr-2 text-red-500" />
+                <MessageSquare className="w-4 h-4 mr-2 text-primary-500" />
                 Mensaje *
               </Label>
               {errors.mensaje && (
@@ -264,7 +264,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
                 <Textarea
                   id="mensaje"
                   {...register("mensaje")}
-                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-red-500 dark:focus:border-red-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 min-h-[140px] resize-none ${
+                  className={`w-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 focus:border-primary-500 dark:focus:border-primary-400 rounded-xl py-4 px-4 text-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600 min-h-[140px] resize-none ${
                     errors.mensaje ? 'border-red-500 dark:border-red-400' : ''
                   }`}
                   placeholder="Cuéntanos en detalle tu consulta..."
@@ -295,7 +295,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ formSubmit, loading }) => {
               <motion.button
                 disabled={loading}
                 type="submit"
-                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-6 rounded-2xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
               >
                 {loading ? (
                   <motion.div 

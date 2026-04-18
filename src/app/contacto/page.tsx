@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import ContactSection from '../../components/contact/ContactSection';
+import { MenaLogoIcon } from "@/components/ui/MenaLogo";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -17,14 +17,14 @@ import {
 
 export default function ContactoPage() {
   return (
-          <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
+          <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-blue-50/30 dark:from-zinc-900 dark:via-black dark:to-blue-900/10">
       
       <ContactSection />
 
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-200 dark:border-red-800 mb-4">
+            <Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800 mb-4">
               Contacto Directo
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
@@ -41,7 +41,7 @@ export default function ContactoPage() {
             <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur hover:shadow-2xl transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -53,10 +53,18 @@ export default function ContactoPage() {
                   Para consultas detalladas y propuestas personalizadas
                 </p>
                 <a 
-                  href="mailto:info@jainmobiliaria.com" 
-                  className="text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors inline-flex items-center"
+                  href="mailto:contacto@menainmobiliaria.com" 
+                  className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center"
                 >
-                  info@jainmobiliaria.com
+                  contacto@menainmobiliaria.com
+                  <Mail className="w-4 h-4 ml-2" />
+                </a>
+                <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-4 mb-1">Ventas y cotizaciones</p>
+                <a 
+                  href="mailto:ventas@menainmobiliaria.com" 
+                  className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center"
+                >
+                  ventas@menainmobiliaria.com
                   <Mail className="w-4 h-4 ml-2" />
                 </a>
               </CardContent>
@@ -65,7 +73,7 @@ export default function ContactoPage() {
             <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur hover:shadow-2xl transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -77,10 +85,10 @@ export default function ContactoPage() {
                   Atención inmediata y personalizada
                 </p>
                 <a 
-                  href="tel:+573105049377" 
-                  className="text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors inline-flex items-center"
+                  href="tel:+573157842019" 
+                  className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center"
                 >
-                  +57 310 504 9377
+                  +57 315 784 2019
                   <Phone className="w-4 h-4 ml-2" />
                 </a>
               </CardContent>
@@ -89,7 +97,7 @@ export default function ContactoPage() {
             <Card className="border-0 shadow-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur hover:shadow-2xl transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -100,8 +108,8 @@ export default function ContactoPage() {
                 <p className="text-zinc-600 dark:text-zinc-300 mb-4">
                   Reuniones y asesorías presenciales
                 </p>
-                <div className="text-red-600 dark:text-red-400 font-medium">
-                  <p>Pasto, Nariño</p>
+                <div className="text-blue-600 dark:text-blue-400 font-medium">
+                  <p>Calle 20 # 24-35, Pasto, Nariño</p>
                   <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Cita previa</p>
                 </div>
               </CardContent>
@@ -122,7 +130,7 @@ export default function ContactoPage() {
               <CardContent className="space-y-6">
                 <div className="grid gap-4">
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <Award className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -136,7 +144,7 @@ export default function ContactoPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <Users className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -150,7 +158,7 @@ export default function ContactoPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <Target className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -164,7 +172,7 @@ export default function ContactoPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
                     <div>
@@ -181,7 +189,7 @@ export default function ContactoPage() {
                 <div className="flex items-center space-x-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
                   <div className="flex items-center space-x-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-red-500 fill-current" />
+                      <Star key={i} className="w-5 h-5 text-blue-500 fill-current" />
                     ))}
                   </div>
                   <span className="text-zinc-600 dark:text-zinc-400 text-sm">
@@ -193,20 +201,14 @@ export default function ContactoPage() {
 
             <div className="relative">
               <div className="relative z-10 flex flex-col items-center justify-center h-full min-h-[400px]">
-                <div className="w-32 h-32 mb-6">
-                  <Image 
-                    src="/logo.svg" 
-                    alt="J&A Inmobiliaria" 
-                    width={128} 
-                    height={128} 
-                    className="w-full h-full" 
-                  />
+                <div className="w-32 h-32 mb-6 flex items-center justify-center text-primary">
+                  <MenaLogoIcon style={{ width: 128, height: 128 }} className="shrink-0 text-primary" />
                 </div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
-                    J&A Inmobiliaria
+                    Mena Inmobiliaria
                   </h3>
-                  <p className="text-xl font-semibold text-red-600 dark:text-red-400">
+                  <p className="text-xl font-semibold text-blue-600 dark:text-blue-400">
                     Bienes Raíces de Lujo
                   </p>
                   <p className="text-zinc-600 dark:text-zinc-400 mt-4 text-sm">
@@ -214,7 +216,7 @@ export default function ContactoPage() {
                   </p>
                 </div>
               </div>
-              <div className="absolute -inset-4 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-2xl blur-xl"></div>
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-2xl blur-xl"></div>
             </div>
           </div>
         </div>

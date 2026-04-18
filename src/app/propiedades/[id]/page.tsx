@@ -42,9 +42,9 @@ export default function DetallePropiedadPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-primary-50/30 dark:from-zinc-900 dark:via-black dark:to-primary-900/10 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+          <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
           </div>
           <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
@@ -60,9 +60,9 @@ export default function DetallePropiedadPage() {
 
   if (error || !property) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-primary-50/30 dark:from-zinc-900 dark:via-black dark:to-primary-900/10 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+          <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
             <Shield className="h-10 w-10 text-white" />
           </div>
           <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
@@ -99,7 +99,7 @@ export default function DetallePropiedadPage() {
   const statusConfig = getStatusConfig(property.status);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-red-50/30 dark:from-zinc-900 dark:via-black dark:to-red-900/10">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-primary-50/30 dark:from-zinc-900 dark:via-black dark:to-primary-900/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         
         {/* Breadcrumb */}
@@ -107,7 +107,7 @@ export default function DetallePropiedadPage() {
           <Button 
             variant="ghost" 
             asChild
-            className="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 group"
+            className="text-zinc-600 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 group"
           >
             <Link href="/propiedades">
               <ChevronLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -177,14 +177,14 @@ export default function DetallePropiedadPage() {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="w-12 h-12 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-white dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-red-600 dark:hover:text-red-400"
+                          className="w-12 h-12 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-white dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400"
                         >
                           <Heart className="w-5 h-5" />
                         </Button>
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="w-12 h-12 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-white dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-red-600 dark:hover:text-red-400"
+                          className="w-12 h-12 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-white dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-primary-600 dark:hover:text-primary-400"
                         >
                           <Share2 className="w-5 h-5" />
                         </Button>
@@ -193,7 +193,7 @@ export default function DetallePropiedadPage() {
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="text-center text-zinc-400 dark:text-zinc-500">
-                        <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-4">
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4">
                           <ImageIcon className="h-10 w-10 text-white" />
                         </div>
                         <span className="text-lg font-medium">Sin imágenes disponibles</span>
@@ -210,7 +210,7 @@ export default function DetallePropiedadPage() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Badge variant="outline" className="border-red-200 text-red-700 dark:border-red-800 dark:text-red-300 px-3 py-1">
+                      <Badge variant="outline" className="border-primary-200 text-primary-700 dark:border-primary-800 dark:text-primary-300 px-3 py-1">
                         <Building2 className="w-4 h-4 mr-1" />
                         {property.type}
                       </Badge>
@@ -225,7 +225,7 @@ export default function DetallePropiedadPage() {
                     </h1>
                     
                     <div className="flex items-center space-x-2 text-zinc-600 dark:text-zinc-400 mb-6">
-                      <MapPin className="w-5 h-5 text-red-500" />
+                      <MapPin className="w-5 h-5 text-primary-500" />
                       <span className="text-lg">{property.address}</span>
                     </div>
                   </div>
@@ -236,22 +236,22 @@ export default function DetallePropiedadPage() {
                 {/* Property Features */}
                 <div className="grid grid-cols-3 gap-6">
                   {property.bedrooms && (
-                    <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-2xl border border-red-200 dark:border-red-800">
-                      <Bed className="w-8 h-8 text-red-600 dark:text-red-400 mx-auto mb-3" />
+                    <div className="text-center p-6 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl border border-primary-200 dark:border-primary-800">
+                      <Bed className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" />
                       <div className="text-3xl font-black text-zinc-900 dark:text-zinc-100 mb-1">{property.bedrooms}</div>
                       <div className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">Habitaciones</div>
                     </div>
                   )}
                   {property.bathrooms && (
-                    <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-2xl border border-red-200 dark:border-red-800">
-                      <Bath className="w-8 h-8 text-red-600 dark:text-red-400 mx-auto mb-3" />
+                    <div className="text-center p-6 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl border border-primary-200 dark:border-primary-800">
+                      <Bath className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" />
                       <div className="text-3xl font-black text-zinc-900 dark:text-zinc-100 mb-1">{property.bathrooms}</div>
                       <div className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">Baños</div>
                     </div>
                   )}
                   {property.area && (
-                    <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-2xl border border-red-200 dark:border-red-800">
-                      <Square className="w-8 h-8 text-red-600 dark:text-red-400 mx-auto mb-3" />
+                    <div className="text-center p-6 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl border border-primary-200 dark:border-primary-800">
+                      <Square className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" />
                       <div className="text-3xl font-black text-zinc-900 dark:text-zinc-100 mb-1">{property.area}</div>
                       <div className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">m²</div>
                     </div>
@@ -261,7 +261,7 @@ export default function DetallePropiedadPage() {
                 {/* Description */}
                 <div>
                   <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center">
-                    <Zap className="w-6 h-6 text-red-500 mr-2" />
+                    <Zap className="w-6 h-6 text-primary-500 mr-2" />
                     Descripción
                   </h3>
                   <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
@@ -275,7 +275,7 @@ export default function DetallePropiedadPage() {
             <Card className="border-0 shadow-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur rounded-3xl">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-3 text-zinc-900 dark:text-zinc-100">
-                  <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -303,16 +303,16 @@ export default function DetallePropiedadPage() {
             
             <div className="sticky top-8 space-y-8">
               {/* Price Card */}
-              <Card className="border-0 shadow-2xl bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white rounded-3xl overflow-hidden">
+              <Card className="border-0 shadow-2xl bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white rounded-3xl overflow-hidden">
                 <CardContent className="p-8">
                   <div className="text-center">
                     <div className="text-4xl lg:text-5xl font-black mb-3">
                       ${property.price.toLocaleString()}
                     </div>
-                    <div className="text-red-100 text-lg font-medium">Precio de venta</div>
+                    <div className="text-primary-100 text-lg font-medium">Precio de venta</div>
                     <div className="mt-4 flex items-center justify-center space-x-2">
                       <Award className="w-4 h-4" />
-                      <span className="text-sm text-red-100">Precio competitivo</span>
+                      <span className="text-sm text-primary-100">Precio competitivo</span>
                     </div>
                   </div>
                 </CardContent>
@@ -322,17 +322,17 @@ export default function DetallePropiedadPage() {
               <Card className="border-0 shadow-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur rounded-3xl">
                 <CardHeader className="pb-6">
                   <CardTitle className="text-xl font-bold text-zinc-900 dark:text-zinc-100 flex items-center">
-                    <Users className="w-5 h-5 text-red-500 mr-2" />
+                    <Users className="w-5 h-5 text-primary-500 mr-2" />
                     Contactar Agente
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Button 
                     asChild
-                    className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-2xl shadow-lg"
+                    className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-4 rounded-2xl shadow-lg"
                   >
                     <a 
-                      href="https://wa.me/573105049377"
+                      href="https://wa.me/573157842019"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -354,15 +354,15 @@ export default function DetallePropiedadPage() {
                   
                   <div className="text-center pt-6 border-t border-zinc-200 dark:border-zinc-700">
                     <div className="flex items-center justify-center space-x-2 mb-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
                         <Award className="w-6 h-6 text-white" />
                       </div>
                       <div className="text-left">
-                        <p className="font-bold text-zinc-900 dark:text-zinc-100">J&A Inmobiliaria</p>
+                        <p className="font-bold text-zinc-900 dark:text-zinc-100">Mena Inmobiliaria</p>
                         <p className="text-sm text-zinc-600 dark:text-zinc-400">Agente Certificado</p>
                       </div>
                     </div>
-                    <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">+57 310 504 9377</p>
+                    <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">+57 315 784 2019</p>
                     <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">Atención 24/7</p>
                   </div>
                 </CardContent>
@@ -372,7 +372,7 @@ export default function DetallePropiedadPage() {
               <Card className="border-0 shadow-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur rounded-3xl">
                 <CardHeader className="pb-6">
                   <CardTitle className="text-xl font-bold text-zinc-900 dark:text-zinc-100 flex items-center">
-                    <Shield className="w-5 h-5 text-red-500 mr-2" />
+                    <Shield className="w-5 h-5 text-primary-500 mr-2" />
                     Información Adicional
                   </CardTitle>
                 </CardHeader>

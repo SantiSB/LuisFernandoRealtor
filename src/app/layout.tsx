@@ -9,12 +9,68 @@ import Footer from "../components/layout/Footer";
 import { AlertProvider } from "@/components/layout/AlertContext";
 import ReactQueryProvider from '../providers/ReactQueryProvider';
 import WhatsAppButton from "@/components/whatasapp/WhatsAppButton";
+import { SITE_ORIGIN } from "@/constants/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const defaultTitle =
+  "Mena Inmobiliaria | Inmobiliaria Líder en Nariño | Propiedades en Arriendo y Venta en Pasto | Todos los Presupuestos";
+const defaultDescription =
+  "Mena Inmobiliaria, la inmobiliaria líder en Nariño. Encuentra propiedades en arriendo y venta en Pasto para todos los presupuestos. Tu socio inmobiliario de confianza en Nariño.";
+
+const siteMetadataBase = new URL(`${SITE_ORIGIN}/`);
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  name: "Mena Inmobiliaria",
+  url: SITE_ORIGIN,
+  image: `${SITE_ORIGIN}/logo.svg`,
+  telephone: "+57-315-784-2019",
+  email: "contacto@menainmobiliaria.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Calle 20 # 24-35",
+    addressLocality: "Pasto",
+    addressRegion: "Nariño",
+    addressCountry: "CO",
+  },
+  sameAs: [
+    "https://www.instagram.com/menainmobiliaria/",
+    "https://www.tiktok.com/@mena.inmobiliaria",
+    "https://www.facebook.com/menainmobiliaria",
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "J&A Inmobiliaria | Inmobiliaria Líder en Nariño | Propiedades en Arriendo y Venta en Pasto | Todos los Presupuestos",
-  description: "J&A Inmobiliaria, la inmobiliaria líder en Nariño. Encuentra propiedades en arriendo y venta en Pasto para todos los presupuestos. Tu socio inmobiliario de confianza en Nariño.",
+  metadataBase: siteMetadataBase,
+  title: {
+    default: defaultTitle,
+    template: "%s | Mena Inmobiliaria",
+  },
+  description: defaultDescription,
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: siteMetadataBase,
+    siteName: "Mena Inmobiliaria",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [
+      {
+        url: "/logo.svg",
+        width: 40,
+        height: 40,
+        alt: "Mena Inmobiliaria",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [`${SITE_ORIGIN}/logo.svg`],
+  },
 };
 
 export default function RootLayout({
@@ -31,8 +87,14 @@ export default function RootLayout({
               <body
                 className={`${inter.className} bg-gray-50 dark:bg-black text-black dark:text-white`}
               >
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(organizationJsonLd),
+                  }}
+                />
                 <Header />
-                <WhatsAppButton phoneNumber="573105049377" />
+                <WhatsAppButton phoneNumber="573157842019" />
                 {children}
                 <Footer />
               </body>

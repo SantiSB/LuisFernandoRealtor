@@ -16,7 +16,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 group"
-      aria-label="Chat with us on WhatsApp"
+      aria-label="WhatsApp Mena Inmobiliaria"
     >
       <div className="relative">
         <div className="absolute inset-0 bg-green-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
